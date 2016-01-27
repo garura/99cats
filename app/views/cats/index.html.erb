@@ -1,0 +1,18 @@
+<ul>
+  <a href="<%= new_cat_rental_request_url %>">Rent a cat!</a><br><br>
+  <% @cats.each do |cat| %>
+  <h1><a href = "<%= cat_url(cat) %>"><%= cat.name %></a></h1>
+
+      <li>Age: <%= cat.age %></li>
+      <% cat.attributes.each do |quality| %>
+      <% next if quality[0] == 'name' %>
+      <li>  <%= "#{quality[0].capitalize}: #{quality[1].to_s.capitalize}" %> <br></li>
+      <% end %>
+      <br>
+      <br>
+      <br>
+  <% end %>
+
+</ul>
+
+<a href="<%= new_cat_url %>">Create a cat</a>

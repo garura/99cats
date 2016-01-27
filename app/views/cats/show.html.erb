@@ -1,0 +1,47 @@
+<table>
+  <th> <%= @cat.name %> </th>
+
+  <tr>
+    <td>Age:</td>
+    <td> <%= @cat.age %></td>
+  <tr>
+
+  <tr>
+    <td>Color:</td>
+    <td> <%= @cat.color %></td>
+  <tr>
+
+  <tr>
+    <td>Sex:</td>
+    <td> <%= @cat.sex %></td>
+  <tr>
+
+  <tr>
+    <td>Birthday:</td>
+    <td> <%= @cat.birth_date %></td>
+  <tr>
+
+  <tr>
+    <td>Description:</td>
+    <td> <%= @cat.description %></td>
+  <tr>
+</table>
+<a href="<%= edit_cat_url(@cat) %>">Modify this cat!</a>
+<br>
+<a href="<%= cats_url %>">See all cats</a>
+<br><br>
+<p>Rental Information</p>
+<table>
+  <tr>
+    <td>Start Date</td>
+    <td>End Date</td>
+  </tr>
+  <% @cat_rental_requests.each do |request| %>
+  <tr>
+    <td><%= request.start_date %></td>
+    <td><%= request.end_date %></td>
+    <td><%=request.pending? ?  (button_to "Approve", request_approve_url(request))  : request.status %> </td>
+    <td><%=request.pending? ?  (button_to "Deny", request_deny_url(request))  : "" %> </td>
+  <tr>
+  <% end %>
+</table>
